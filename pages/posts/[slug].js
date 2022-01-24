@@ -1,45 +1,49 @@
-import { staticRequest } from 'tinacms'
-import { Layout } from '../../components/Layout'
+import { gql, staticRequest } from "tinacms";
+import { Layout } from "../../components/Layout";
 export default function Home(props) {
   return (
     <Layout>
       <code>
         <pre
           style={{
-            backgroundColor: 'lightgray',
+            backgroundColor: "lightgray",
           }}
         >
           {JSON.stringify(props.data.getPostDocument.data, null, 2)}
         </pre>
       </code>
     </Layout>
-  )
+  );
 }
 
 export const getStaticPaths = async () => {
-  const tinaProps = await staticRequest({
-    query: `{
-        getPostList{
-          edges {
-            node {
-              sys {
-                filename
-              }
+  const query = gql`
+    {
+      getPostList {
+        edges {
+          node {
+            sys {
+              filename
             }
           }
         }
-      }`,
+      }
+    }
+  `;
+
+  const data = await staticRequest({
+    query,
     variables: {},
-  })
-  const paths = tinaProps.getPostList.edges.map((x) => {
-    return { params: { slug: x.node.sys.filename } }
-  })
+  });
+  const paths = data.getPostList.edges.map((x) => {
+    return { params: { slug: x.node.sys.filename } };
+  });
 
   return {
     paths,
-    fallback: 'blocking',
-  }
-}
+    fallback: "blocking",
+  };
+};
 export const getStaticProps = async (ctx) => {
   const query = `query getPost($relativePath: String!) {
     getPostDocument(relativePath: $relativePath) {
@@ -49,16 +53,16 @@ export const getStaticProps = async (ctx) => {
       }
     }
   }
-  `
+  `;
   const variables = {
-    relativePath: ctx.params.slug + '.md',
-  }
-  let data = {}
+    relativePath: ctx.params.slug + ".md",
+  };
+  let data = {};
   try {
     data = await staticRequest({
       query,
       variables,
-    })
+    });
   } catch (error) {
     // swallow errors related to document creation
   }
@@ -69,5 +73,5 @@ export const getStaticProps = async (ctx) => {
       query,
       variables,
     },
-  }
-}
+  };
+};

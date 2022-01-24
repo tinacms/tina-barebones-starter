@@ -1,30 +1,38 @@
-import { getStaticPropsForTina } from 'tinacms'
-import { TinaMarkdown } from 'tinacms/dist/rich-text'
-import { Layout } from '../components/Layout'
+import { gql, staticRequest } from "tinacms";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+import { Layout } from "../components/Layout";
 export default function Home(props) {
-  const content = props.data.getPageDocument.data.body
+  const content = props.data.getPageDocument.data.body;
   return (
     <Layout>
       <TinaMarkdown content={content} />
     </Layout>
-  )
+  );
 }
 
 export const getStaticProps = async () => {
-  const tinaProps = await getStaticPropsForTina({
-    query: `{
-    getPageDocument(relativePath: "home.mdx"){
-      data{
-        body
+  let data = {};
+  const query = gql`
+    {
+      getPageDocument(relativePath: "home.mdx") {
+        data {
+          body
+        }
       }
     }
-  }`,
-    variables: {},
-  })
+  `;
+  const variables = {};
+  try {
+    data = await staticRequest({ query, variables });
+  } catch (error) {
+    // swallow errors related to document creation
+  }
 
   return {
     props: {
-      ...tinaProps,
+      query,
+      variables,
+      data,
     },
-  }
-}
+  };
+};
