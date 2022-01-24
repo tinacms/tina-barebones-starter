@@ -1,7 +1,6 @@
 ---
-title: This is a title asdfasdf asd f
+title: This is a title
 ---
-
 
 This is a test
 
