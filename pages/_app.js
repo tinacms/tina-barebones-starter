@@ -4,6 +4,7 @@ import { TinaEditProvider } from "tinacms/dist/edit-state";
 // @ts-ignore FIXME: default export needs to be 'ComponentType<{}>
 const TinaCMS = dynamic(() => import("tinacms"), { ssr: false });
 
+const branch = "main";
 const apiURL =
   process.env.NODE_ENV == "development"
     ? "http://localhost:4001/graphql"
