@@ -1,8 +1,8 @@
-import { getStaticPropsForTina } from 'tinacms'
-import { Layout } from '../../components/Layout'
-import Link from 'next/link'
+import { gql, staticRequest } from "tinacms";
+import { Layout } from "../../components/Layout";
+import Link from "next/link";
 export default function Home(props) {
-  const postsList = props.data.getPostList.edges
+  const postsList = props.data.getPostList.edges;
   return (
     <Layout>
       <h1>Posts</h1>
@@ -16,29 +16,37 @@ export default function Home(props) {
         ))}
       </div>
     </Layout>
-  )
+  );
 }
 
 export const getStaticProps = async () => {
-  const tinaProps = await getStaticPropsForTina({
-    query: `{
-        getPostList{
-          edges {
-            node {
-              id
-              sys {
-                filename
-              }
+  let data = {};
+  const query = gql`
+    {
+      getPostList {
+        edges {
+          node {
+            id
+            sys {
+              filename
             }
           }
         }
-      }`,
-    variables: {},
-  })
+      }
+    }
+  `;
 
+  const variables = {};
+  try {
+    data = await staticRequest({ query, variables });
+  } catch (error) {
+    // swallow errors related to document creation
+  }
   return {
     props: {
-      ...tinaProps,
+      query,
+      variables,
+      data,
     },
-  }
-}
+  };
+};
