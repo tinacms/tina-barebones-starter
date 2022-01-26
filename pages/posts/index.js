@@ -1,8 +1,28 @@
-import { gql, staticRequest } from "tinacms";
+import { staticRequest } from "tinacms";
 import { Layout } from "../../components/Layout";
 import Link from "next/link";
+import { useTina } from "tinacms/dist/edit-state";
+
+const query = `{
+  getPostList{
+    edges {
+      node {
+        id
+        sys {
+          filename
+        }
+      }
+    }
+  }
+}`;
+
 export default function Home(props) {
-  const postsList = props.data.getPostList.edges;
+  const { data } = useTina({
+    query,
+    variables: {},
+    data: props.data,
+  });
+  const postsList = data.getPostList.edges;
   return (
     <Layout>
       <h1>Posts</h1>
@@ -21,32 +41,20 @@ export default function Home(props) {
 
 export const getStaticProps = async () => {
   let data = {};
-  const query = gql`
-    {
-      getPostList {
-        edges {
-          node {
-            id
-            sys {
-              filename
-            }
-          }
-        }
-      }
-    }
-  `;
-
   const variables = {};
   try {
-    data = await staticRequest({ query, variables });
-  } catch (error) {
-    // swallow errors related to document creation
-  }
-  return {
-    props: {
+    data = await staticRequest({
       query,
       variables,
+    });
+  } catch {
+    // swallow errors related to document creation
+  }
+
+  return {
+    props: {
       data,
+      //myOtherProp: 'some-other-data',
     },
   };
 };
