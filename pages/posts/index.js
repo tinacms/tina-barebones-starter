@@ -17,6 +17,7 @@ const query = `{
 }`;
 
 export default function Home(props) {
+  // data passes though in production mode and data is updated to the sidebar data in edit-mode
   const { data } = useTina({
     query,
     variables: {},

@@ -13,6 +13,7 @@ const query = `query getPost($relativePath: String!) {
 `;
 
 export default function Home(props) {
+  // data passes though in production mode and data is updated to the sidebar data in edit-mode
   const { data } = useTina({
     query,
     variables: props.variables,
@@ -35,7 +36,7 @@ export default function Home(props) {
 }
 
 export const getStaticPaths = async () => {
-  const postRequest = await staticRequest({
+  const postsResponse = await staticRequest({
     query: `{
         getPostList{
           edges {
@@ -49,7 +50,7 @@ export const getStaticPaths = async () => {
       }`,
     variables: {},
   });
-  const paths = postRequest.getPostList.edges.map((x) => {
+  const paths = postsResponse.getPostList.edges.map((x) => {
     return { params: { slug: x.node.sys.filename } };
   });
 
