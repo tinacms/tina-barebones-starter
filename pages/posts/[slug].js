@@ -1,6 +1,25 @@
-import { gql, staticRequest } from "tinacms";
+import { staticRequest } from "tinacms";
 import { Layout } from "../../components/Layout";
+import { useTina } from "tinacms/dist/edit-state";
+
+const query = `query getPost($relativePath: String!) {
+  getPostDocument(relativePath: $relativePath) {
+    data {
+      title
+      body
+    }
+  }
+}
+`;
+
 export default function Home(props) {
+  // data passes though in production mode and data is updated to the sidebar data in edit-mode
+  const { data } = useTina({
+    query,
+    variables: props.variables,
+    data: props.data,
+  });
+
   return (
     <Layout>
       <code>
@@ -9,7 +28,7 @@ export default function Home(props) {
             backgroundColor: "lightgray",
           }}
         >
-          {JSON.stringify(props.data.getPostDocument.data, null, 2)}
+          {JSON.stringify(data.getPostDocument.data, null, 2)}
         </pre>
       </code>
     </Layout>
@@ -17,25 +36,21 @@ export default function Home(props) {
 }
 
 export const getStaticPaths = async () => {
-  const query = gql`
-    {
-      getPostList {
-        edges {
-          node {
-            sys {
-              filename
+  const postsResponse = await staticRequest({
+    query: `{
+        getPostList{
+          edges {
+            node {
+              sys {
+                filename
+              }
             }
           }
         }
-      }
-    }
-  `;
-
-  const data = await staticRequest({
-    query,
+      }`,
     variables: {},
   });
-  const paths = data.getPostList.edges.map((x) => {
+  const paths = postsResponse.getPostList.edges.map((x) => {
     return { params: { slug: x.node.sys.filename } };
   });
 
@@ -45,15 +60,6 @@ export const getStaticPaths = async () => {
   };
 };
 export const getStaticProps = async (ctx) => {
-  const query = `query getPost($relativePath: String!) {
-    getPostDocument(relativePath: $relativePath) {
-      data {
-        title
-        body
-      }
-    }
-  }
-  `;
   const variables = {
     relativePath: ctx.params.slug + ".md",
   };
@@ -70,7 +76,6 @@ export const getStaticProps = async (ctx) => {
   return {
     props: {
       data,
-      query,
       variables,
     },
   };
