@@ -18,7 +18,17 @@ const App = ({ Component, pageProps }) => {
       <TinaEditProvider
         showEditButton={true}
         editMode={
-          <TinaCMS apiURL={apiURL}>
+          <TinaCMS
+            apiURL={apiURL}
+            cmsCallback={(cms) => {
+              /**
+               * Enables experimental rich-text editor
+               */
+              cms.flags.set("rich-text-alt", true);
+
+              return cms;
+            }}
+          >
             <Component {...pageProps} />
           </TinaCMS>
         }
