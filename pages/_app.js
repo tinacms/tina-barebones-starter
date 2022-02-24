@@ -29,9 +29,6 @@ const App = ({ Component, pageProps }) => {
                       if (document.sys.filename === "home") {
                         return "/";
                       }
-                      if (document.sys.filename === "about") {
-                        return "/about";
-                      }
                     }
 
                     if (["post"].includes(collection.name)) {
