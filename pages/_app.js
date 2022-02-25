@@ -21,6 +21,26 @@ const App = ({ Component, pageProps }) => {
           <TinaCMS
             cmsCallback={(cms) => {
               cms.flags.set("tina-admin", true);
+
+              import("tinacms").then(({ RouteMappingPlugin }) => {
+                const RouteMapping = new RouteMappingPlugin(
+                  (collection, document) => {
+                    if (["page"].includes(collection.name)) {
+                      if (document.sys.filename === "home") {
+                        return "/";
+                      }
+                    }
+
+                    if (["post"].includes(collection.name)) {
+                      return `/posts/${document.sys.filename}`;
+                    }
+
+                    return undefined;
+                  }
+                );
+
+                cms.plugins.add(RouteMapping);
+              });
             }}
             apiURL={apiURL}
           >
