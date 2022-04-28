@@ -1,40 +1,53 @@
-import { defineSchema } from '@tinacms/cli'
+import { defineConfig, defineSchema } from "tinacms";
 
-export default defineSchema({
+const schema = defineSchema({
   collections: [
     {
-      label: 'Page Content',
-      name: 'page',
-      path: 'content/page',
+      label: "Page Content",
+      name: "page",
+      path: "content/page",
       fields: [
         {
-          name: 'body',
-          label: 'Main Content',
-          type: 'rich-text',
+          name: "body",
+          label: "Main Content",
+          type: "rich-text",
           isBody: true,
         },
       ],
     },
     {
-      label: 'Blog Posts',
-      name: 'post',
-      path: 'content/post',
+      label: "Blog Posts",
+      name: "post",
+      path: "content/post",
       fields: [
         {
-          type: 'string',
-          label: 'Title',
-          name: 'title',
+          type: "string",
+          label: "Title",
+          name: "title",
         },
         {
-          type: 'string',
-          label: 'Blog Post Body',
-          name: 'body',
+          type: "string",
+          label: "Blog Post Body",
+          name: "body",
           isBody: true,
           ui: {
-            component: 'textarea',
+            component: "textarea",
           },
         },
       ],
     },
   ],
-})
+});
+
+export default schema;
+
+const branch = process.env.NEXT_PUBLIC_EDIT_BRANCH || "main";
+const apiURL =
+  process.env.NODE_ENV == "development"
+    ? "http://localhost:4001/graphql"
+    : `https://content.tinajs.io/content/${process.env.NEXT_PUBLIC_TINA_CLIENT_ID}/github/${branch}`;
+
+export const tinaConfig = defineConfig({
+  apiURL,
+  schema,
+});
