@@ -1,7 +1,5 @@
 ---
-title: This is a title
+title: Hello, World!
 ---
 
-This is a test
-
-How are you doing?
+Edit me!
