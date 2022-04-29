@@ -6,6 +6,7 @@ const schema = defineSchema({
       label: "Page Content",
       name: "page",
       path: "content/page",
+      format: "mdx",
       fields: [
         {
           name: "body",
@@ -50,4 +51,24 @@ const apiURL =
 export const tinaConfig = defineConfig({
   apiURL,
   schema,
+  cmsCallback: (cms) => {
+    import("tinacms").then(({ RouteMappingPlugin }) => {
+      const RouteMapping = new RouteMappingPlugin((collection, document) => {
+        if (["page"].includes(collection.name)) {
+          if (document._sys.filename === "home") {
+            return "/";
+          }
+        }
+
+        if (["post"].includes(collection.name)) {
+          return `/posts/${document._sys.filename}`;
+        }
+
+        return undefined;
+      });
+
+      cms.plugins.add(RouteMapping);
+    });
+    return cms;
+  },
 });
