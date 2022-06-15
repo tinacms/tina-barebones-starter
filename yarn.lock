@@ -1473,10 +1473,10 @@
   resolved "https://registry.yarnpkg.com/@sambego/storybook-styles/-/storybook-styles-1.0.0.tgz#4f840ee26dd0b25dcb803a75caa42e16071dcaae"
   integrity sha512-n0SqZwDewUDRaStEcoNMiYy9qovaLVStsh4Gb2dc2LLiG3IIK0UXdeR1N7puVuRihJq/192uOyGPCjZ/NAteuA==
 
-"@tinacms/cli@^0.60.21":
-  version "0.60.21"
-  resolved "https://registry.yarnpkg.com/@tinacms/cli/-/cli-0.60.21.tgz#f62d4ec83d3aab03557076fa4d0ecfbe4ab0c466"
-  integrity sha512-NOi7WtzSOCsfYGMcP5L86IdyOUHhmQSCMwSz7Xe0CMWiqPD69G/w6C589wjrobAmeIe+y0tgrVhoVp5FPiK21w==
+"@tinacms/cli@^0.60.22":
+  version "0.60.22"
+  resolved "https://registry.yarnpkg.com/@tinacms/cli/-/cli-0.60.22.tgz#99168c7dd04cce48bd43f4b2f98dbeebdece5852"
+  integrity sha512-JO+rMUt/NHakY7k26J190GUTfZLojaTYU2iDTCJGjV8983XnpHUfk1ZH7cnvz55iImS1Fd6KzoKzwvYlndiNog==
   dependencies:
     "@graphql-codegen/core" "^2.1.0"
     "@graphql-codegen/plugin-helpers" latest
@@ -1487,9 +1487,9 @@
     "@graphql-tools/graphql-file-loader" "^7.2.0"
     "@graphql-tools/load" "^7.3.2"
     "@tinacms/datalayer" "0.1.1"
-    "@tinacms/graphql" "0.60.6"
+    "@tinacms/graphql" "0.60.7"
     "@tinacms/metrics" "0.0.3"
-    "@tinacms/schema-tools" "0.0.4"
+    "@tinacms/schema-tools" "0.0.5"
     "@yarnpkg/esbuild-plugin-pnp" "^2.0.1-rc.3"
     add "^2.0.6"
     ajv "^6.12.3"
@@ -1543,10 +1543,10 @@
     prettier "^2.2.1"
     yup "^0.32.9"
 
-"@tinacms/graphql@0.60.6":
-  version "0.60.6"
-  resolved "https://registry.yarnpkg.com/@tinacms/graphql/-/graphql-0.60.6.tgz#0fe680ed6b7f51f75d49d21f41eb348877997a50"
-  integrity sha512-XrqdqmwVmIst4PgXLicuB4CuNFuglzYy2nW+vM35UQy2V+5Pl5tzL2iaTpRxm10iuAS0v8Ja040wDlxTZZEcVQ==
+"@tinacms/graphql@0.60.7":
+  version "0.60.7"
+  resolved "https://registry.yarnpkg.com/@tinacms/graphql/-/graphql-0.60.7.tgz#afabd067fc5396a221a635decad32147b6aefdd7"
+  integrity sha512-Qpcn1tbNBtms80+Zed2HqO8k4l92aiWrKSZurtaQfWM0E/CKQ5ksl70C2017gwwSzwIxsdAzSj9YNa4bUcRylQ==
   dependencies:
     "@graphql-tools/relay-operation-optimizer" "^6.4.1"
     "@tinacms/datalayer" "0.1.1"
@@ -1602,6 +1602,13 @@
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/@tinacms/schema-tools/-/schema-tools-0.0.4.tgz#dd020c7218a6718b755eaba093dd8ba2064fa72e"
   integrity sha512-MnOS75o22ce21mbX48uHgHV0yA7R7g4vZzD2g3WYxKg2yQTAuZUyJFwSZav1I7e6WAR4DQAOqymLgK51W1eE2A==
+  dependencies:
+    zod "^3.14.3"
+
+"@tinacms/schema-tools@0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@tinacms/schema-tools/-/schema-tools-0.0.5.tgz#76ae500ac6cac02dffd48cf778a6204db0c448bb"
+  integrity sha512-/Ers8dPWA8aldK0DdsZYAh8blmasJr9pLgQ5iRUyFPyBu79kBhSuB4D8dikppraQyAo50psZIzWZ2cz+2twH2Q==
   dependencies:
     zod "^3.14.3"
 
