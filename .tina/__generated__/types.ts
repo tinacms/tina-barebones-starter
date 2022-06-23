@@ -296,7 +296,13 @@ export type PageQueryVariables = Exact<{
 
 export type PageQuery = { __typename?: 'Query', page: { __typename?: 'Page', id: string, body?: any | null | undefined, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
-export type PageConnectionQueryVariables = Exact<{ [key: string]: never; }>;
+export type PageConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']>;
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Float']>;
+  last?: InputMaybe<Scalars['Float']>;
+  sort?: InputMaybe<Scalars['String']>;
+}>;
 
 
 export type PageConnectionQuery = { __typename?: 'Query', pageConnection: { __typename?: 'PageConnection', totalCount: number, edges?: Array<{ __typename?: 'PageConnectionEdges', node?: { __typename?: 'Page', id: string, body?: any | null | undefined, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null | undefined } | null | undefined> | null | undefined } };
@@ -308,7 +314,13 @@ export type PostQueryVariables = Exact<{
 
 export type PostQuery = { __typename?: 'Query', post: { __typename?: 'Post', id: string, title?: string | null | undefined, body?: string | null | undefined, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
-export type PostConnectionQueryVariables = Exact<{ [key: string]: never; }>;
+export type PostConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']>;
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Float']>;
+  last?: InputMaybe<Scalars['Float']>;
+  sort?: InputMaybe<Scalars['String']>;
+}>;
 
 
 export type PostConnectionQuery = { __typename?: 'Query', postConnection: { __typename?: 'PostConnection', totalCount: number, edges?: Array<{ __typename?: 'PostConnectionEdges', node?: { __typename?: 'Post', id: string, title?: string | null | undefined, body?: string | null | undefined, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null | undefined } | null | undefined> | null | undefined } };
@@ -343,8 +355,14 @@ export const PageDocument = gql`
 }
     ${PagePartsFragmentDoc}`;
 export const PageConnectionDocument = gql`
-    query pageConnection {
-  pageConnection {
+    query pageConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String) {
+  pageConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+  ) {
     totalCount
     edges {
       node {
@@ -384,8 +402,14 @@ export const PostDocument = gql`
 }
     ${PostPartsFragmentDoc}`;
 export const PostConnectionDocument = gql`
-    query postConnection {
-  postConnection {
+    query postConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String) {
+  postConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+  ) {
     totalCount
     edges {
       node {
