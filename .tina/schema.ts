@@ -1,6 +1,14 @@
 import { defineConfig, defineSchema } from "tinacms";
 
 const schema = defineSchema({
+  config: {
+    media: {
+      tina: {
+        mediaRoot: "uploads",
+        publicFolder: "public",
+      },
+    },
+  },
   collections: [
     {
       label: "Page Content",
