@@ -1,4 +1,5 @@
 import { defineConfig, defineSchema, RouteMappingPlugin } from "tinacms";
+import { client } from "./__generated__/client";
 
 const schema = defineSchema({
   config: {
@@ -57,6 +58,7 @@ const schema = defineSchema({
 export default schema;
 
 export const tinaConfig = defineConfig({
+  client,
   schema,
   cmsCallback: (cms) => {
     const RouteMapping = new RouteMappingPlugin((collection, document) => {
