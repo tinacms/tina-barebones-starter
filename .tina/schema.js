@@ -1,7 +1,14 @@
-import { defineConfig, defineSchema } from "tinacms";
+import { defineConfig, defineSchema, RouteMappingPlugin } from "tinacms";
+import { client } from "./__generated__/client";
 
 const schema = defineSchema({
   config: {
+    clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
+    branch:
+      process.env.NEXT_PUBLIC_TINA_BRANCH ||
+      process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF ||
+      process.env.HEAD,
+    token: process.env.TINA_TOKEN,
     media: {
       tina: {
         mediaRoot: "uploads",
@@ -50,33 +57,26 @@ const schema = defineSchema({
 
 export default schema;
 
-const branch = process.env.NEXT_PUBLIC_EDIT_BRANCH || "main";
-const apiURL =
-  process.env.NODE_ENV == "development"
-    ? "http://localhost:4001/graphql"
-    : `https://content.tinajs.io/content/${process.env.NEXT_PUBLIC_TINA_CLIENT_ID}/github/${branch}`;
-
 export const tinaConfig = defineConfig({
-  apiURL,
+  client,
   schema,
   cmsCallback: (cms) => {
-    import("tinacms").then(({ RouteMappingPlugin }) => {
-      const RouteMapping = new RouteMappingPlugin((collection, document) => {
-        if (["page"].includes(collection.name)) {
-          if (document._sys.filename === "home") {
-            return "/";
-          }
+    const RouteMapping = new RouteMappingPlugin((collection, document) => {
+      if (["page"].includes(collection.name)) {
+        if (document._sys.filename === "home") {
+          return "/";
         }
+      }
 
-        if (["post"].includes(collection.name)) {
-          return `/posts/${document._sys.filename}`;
-        }
+      if (["post"].includes(collection.name)) {
+        return `/posts/${document._sys.filename}`;
+      }
 
-        return undefined;
-      });
-
-      cms.plugins.add(RouteMapping);
+      return undefined;
     });
+
+    cms.plugins.add(RouteMapping);
+
     return cms;
   },
 });
