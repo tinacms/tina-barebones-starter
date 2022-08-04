@@ -1458,7 +1458,7 @@
   resolved "https://registry.yarnpkg.com/@sambego/storybook-styles/-/storybook-styles-1.0.0.tgz#4f840ee26dd0b25dcb803a75caa42e16071dcaae"
   integrity sha512-n0SqZwDewUDRaStEcoNMiYy9qovaLVStsh4Gb2dc2LLiG3IIK0UXdeR1N7puVuRihJq/192uOyGPCjZ/NAteuA==
 
-"@tinacms/cli@latest":
+"@tinacms/cli@^0.61.0":
   version "0.61.0"
   resolved "https://registry.yarnpkg.com/@tinacms/cli/-/cli-0.61.0.tgz#548ac03ac582dfaf7bd278906b5c480d6421e510"
   integrity sha512-he3dBYECy9tF7Awx0dkdXFstrJQp4FHQSiQBwAIxbGo//f5DqtTWSH0L9NH/XeBLMIm/E0PmtZeYdMd8LVmJQQ==
@@ -8498,7 +8498,7 @@ timers-browserify@2.0.12:
   dependencies:
     setimmediate "^1.0.4"
 
-tinacms@latest:
+tinacms@^0.68.14:
   version "0.68.14"
   resolved "https://registry.yarnpkg.com/tinacms/-/tinacms-0.68.14.tgz#877256843d37a177a43b7531afa966119737969c"
   integrity sha512-o+jOEvzuVZ9FjL1O+vV/EgxypAfe03/gwn/hQWB0sCVpBkMzN0JUa7fwcTlGZrK+91wXPG4qQ0VaF2PnBTuThQ==
