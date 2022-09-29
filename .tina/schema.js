@@ -22,6 +22,13 @@ const schema = defineSchema({
       name: "page",
       path: "content/page",
       format: "mdx",
+      ui: {
+        router: ({ document }) => {
+          if (document._sys.filename === "home") {
+            return "/";
+          }
+        },
+      },
       fields: [
         {
           name: "body",
@@ -35,6 +42,11 @@ const schema = defineSchema({
       label: "Blog Posts",
       name: "post",
       path: "content/post",
+      ui: {
+        router: ({ document }) => {
+          return `/posts/${document._sys.filename}`;
+        },
+      },
       fields: [
         {
           type: "string",
@@ -60,23 +72,4 @@ export default schema;
 export const tinaConfig = defineConfig({
   client,
   schema,
-  cmsCallback: (cms) => {
-    const RouteMapping = new RouteMappingPlugin((collection, document) => {
-      if (["page"].includes(collection.name)) {
-        if (document._sys.filename === "home") {
-          return "/";
-        }
-      }
-
-      if (["post"].includes(collection.name)) {
-        return `/posts/${document._sys.filename}`;
-      }
-
-      return undefined;
-    });
-
-    cms.plugins.add(RouteMapping);
-
-    return cms;
-  },
 });
