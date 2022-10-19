@@ -63,7 +63,7 @@ const schema = {
       ],
       ui: {
         router: ({ document }) => {
-          return `/post/${document._sys.filename}`;
+          return `/posts/${document._sys.filename}`;
         },
       },
     },
