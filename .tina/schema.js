@@ -66,6 +66,7 @@ export const tinaConfig = defineConfig({
         if (document._sys.filename === "home") {
           return "/";
         }
+        return `/pages/${document._sys.filename}`;
       }
 
       if (["post"].includes(collection.name)) {
