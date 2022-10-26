@@ -1,5 +1,6 @@
 fragment PageParts on Page {
-  body
+  text
+  confettiVolume
 }
 
 fragment PostParts on Post {

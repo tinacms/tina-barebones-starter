@@ -1,4 +1,5 @@
 import { defineStaticConfig } from "tinacms";
+import React from "react";
 
 const schema = {
   config: {
@@ -23,10 +24,35 @@ const schema = {
       format: "mdx",
       fields: [
         {
-          name: "body",
-          label: "Main Content",
-          type: "rich-text",
-          isBody: true,
+          type: "string",
+          name: "text",
+        },
+        {
+          type: "number",
+          name: "confettiVolume",
+          ui: {
+            component: (props) => {
+              return (
+                <div className="flex flex-col">
+                  <label
+                    className="font-bold text-sm"
+                    htmlFor={props.input.name}
+                  >
+                    {props.field.name}
+                  </label>
+
+                  <input
+                    className="my-4"
+                    type="range"
+                    id={props.input.name}
+                    {...props.input}
+                    min="0"
+                    max="1000"
+                  />
+                </div>
+              );
+            },
+          },
         },
       ],
       ui: {
@@ -93,4 +119,4 @@ export const config = defineStaticConfig({
   schema,
 });
 
-export default config
+export default config;

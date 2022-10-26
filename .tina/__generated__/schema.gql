@@ -85,20 +85,33 @@ type Collection {
 union DocumentNode = Page | Post
 
 type Page implements Node & Document {
-  body: JSON
+  text: String
+  confettiVolume: Float
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
 }
 
-input RichTextFilter {
+input StringFilter {
   startsWith: String
   eq: String
   exists: Boolean
+  in: [String]
+}
+
+input NumberFilter {
+  lt: Float
+  lte: Float
+  gte: Float
+  gt: Float
+  eq: Float
+  exists: Boolean
+  in: [Float]
 }
 
 input PageFilter {
-  body: RichTextFilter
+  text: StringFilter
+  confettiVolume: NumberFilter
 }
 
 type PageConnectionEdges {
@@ -118,13 +131,6 @@ type Post implements Node & Document {
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
-}
-
-input StringFilter {
-  startsWith: String
-  eq: String
-  exists: Boolean
-  in: [String]
 }
 
 input PostFilter {
@@ -160,7 +166,8 @@ input DocumentMutation {
 }
 
 input PageMutation {
-  body: JSON
+  text: String
+  confettiVolume: Float
 }
 
 input PostMutation {
