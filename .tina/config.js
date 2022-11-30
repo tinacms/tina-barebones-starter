@@ -1,20 +1,6 @@
-import { defineStaticConfig } from "tinacms";
+import { defineConfig, defineSchema } from "tinacms";
 
-const schema = {
-  config: {
-    clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
-    branch:
-      process.env.NEXT_PUBLIC_TINA_BRANCH ||
-      process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF ||
-      process.env.HEAD,
-    token: process.env.TINA_TOKEN,
-    media: {
-      tina: {
-        mediaRoot: "uploads",
-        publicFolder: "public",
-      },
-    },
-  },
+const schema = defineSchema({
   collections: [
     {
       label: "Page Content",
@@ -65,9 +51,9 @@ const schema = {
       },
     },
   ],
-};
+});
 
-export const config = defineStaticConfig({
+export const config = defineConfig({
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
   branch:
     process.env.NEXT_PUBLIC_TINA_BRANCH || // custom branch env override
@@ -93,4 +79,4 @@ export const config = defineStaticConfig({
   schema,
 });
 
-export default config
+export default config;
