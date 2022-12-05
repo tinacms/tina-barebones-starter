@@ -28,7 +28,9 @@ export default function PostList(props) {
 }
 
 export const getStaticProps = async () => {
-  const { data, query, variables } = await client.queries.postConnection();
+  const { data, query, variables } = await client.queries.postConnection({
+    filter: { draft: { eq: false } },
+  });
 
   return {
     props: {

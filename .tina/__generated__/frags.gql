@@ -3,6 +3,7 @@ fragment PageParts on Page {
 }
 
 fragment PostParts on Post {
+  draft
   title
   body
 }

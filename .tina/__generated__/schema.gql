@@ -113,11 +113,17 @@ type PageConnection implements Connection {
 }
 
 type Post implements Node & Document {
+  draft: Boolean!
   title: String
   body: String
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
+}
+
+input BooleanFilter {
+  eq: Boolean
+  exists: Boolean
 }
 
 input StringFilter {
@@ -128,6 +134,7 @@ input StringFilter {
 }
 
 input PostFilter {
+  draft: BooleanFilter
   title: StringFilter
   body: StringFilter
 }
@@ -164,6 +171,7 @@ input PageMutation {
 }
 
 input PostMutation {
+  draft: Boolean
   title: String
   body: String
 }

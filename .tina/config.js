@@ -28,7 +28,15 @@ const schema = defineSchema({
       label: "Blog Posts",
       name: "post",
       path: "content/post",
+
       fields: [
+        {
+          name: "draft",
+          label: "Draft",
+          type: "boolean",
+          required: true,
+          description: "If this is checked the post will not be published",
+        },
         {
           type: "string",
           label: "Title",
@@ -54,6 +62,17 @@ const schema = defineSchema({
 });
 
 export const config = defineConfig({
+  admin: {
+    auth: {
+      onLogin: async ({ token }) => {
+        // Enter preview and pass the token
+        console.log("onLogin ", token);
+        location.href =
+          `/api/preview/enter?token=${token.id_token}&slug=` +
+          location?.pathname;
+      },
+    },
+  },
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
   branch:
     process.env.NEXT_PUBLIC_TINA_BRANCH || // custom branch env override
