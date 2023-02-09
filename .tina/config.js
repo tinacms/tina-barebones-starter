@@ -1,4 +1,5 @@
 import { defineConfig, defineSchema } from "tinacms";
+console.log("test token", process.env.TINA_PUBLIC_TEST_TOKEN);
 
 const schema = defineSchema({
   collections: [
