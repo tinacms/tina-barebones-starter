@@ -12,7 +12,7 @@
     "next": "^12.0.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "tinacms": "^1.5.24"
+    "tinacms": "^1.5.28"
   },
   "devDependencies": {
     "@tinacms/cli": "^1.5.34",
