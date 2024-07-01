@@ -9,9 +9,6 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: ["18"]
     name: Node 18 sample
     steps:
       - uses: actions/checkout@v4
