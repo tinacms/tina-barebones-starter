@@ -1,5 +1,6 @@
-import client from "../tina/__generated__/client";
 import Home from ".";
+import client from "../../tina/__generated__/client";
+
 
 export const getHomeProps: any = async () => {
     const { data, query, variables } = await client.queries.page({

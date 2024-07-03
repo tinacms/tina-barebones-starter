@@ -1,5 +1,5 @@
 "use client"
-import Layout from "./layout";
+import Layout from "../layout";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { tinaField, useTina } from "tinacms/dist/react";
 
