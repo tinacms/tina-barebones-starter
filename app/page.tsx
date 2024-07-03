@@ -1,0 +1,22 @@
+import { GetStaticProps } from "next"
+import client from "../tina/__generated__/client";
+import Home from ".";
+
+export const getHomeProps: any = async () => {
+    const { data, query, variables } = await client.queries.page({
+        relativePath: "home.mdx",
+      });
+    
+      return {
+        props: {
+          data,
+          query,
+          variables,
+        },
+      };
+  }
+
+export default async function Page() {
+    const { props } = await getHomeProps()
+    return <Home {...props} />
+}
