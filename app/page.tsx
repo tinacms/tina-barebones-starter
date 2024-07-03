@@ -1,4 +1,3 @@
-import { GetStaticProps } from "next"
 import client from "../tina/__generated__/client";
 import Home from ".";
 
