@@ -1,13 +1,24 @@
+import Link from 'next/link'
 import React from 'react'
-import ClientLayout from './ClientLayout'
 
 export default function RootLayout({
   children,
 }) {
   return (
     <html lang="en">
-      <body>        
-        <ClientLayout>{children}</ClientLayout>
+      <body style={{
+        margin: '3rem',
+      }}>        
+        <header>
+          <Link href="/">
+            Home
+          </Link>
+          {' | '}
+          <Link href="/posts">
+            Posts
+          </Link>
+        </header>
+        <main>{children}</main>
       </body>
     </html>
   )
