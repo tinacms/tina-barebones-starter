@@ -1,7 +1,6 @@
 "use client"
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { tinaField, useTina } from "tinacms/dist/react";
-import Layout from "../layout";
 
 //TODO : Define the props type
 export default function Home(props) {

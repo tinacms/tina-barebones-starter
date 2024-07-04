@@ -1,4 +1,4 @@
-import PostList from ".";
+import PostList from "./client-page";
 import { client } from "../../tina/__generated__/client";
 
 

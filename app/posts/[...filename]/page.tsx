@@ -1,4 +1,4 @@
-import Post from ".";
+import Post from "./client-page";
 import client from "../../../tina/__generated__/client";
 
 export async function generateStaticParams() {
