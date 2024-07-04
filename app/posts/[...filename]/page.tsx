@@ -1,22 +1,27 @@
-"use client";
-
-import PostList from ".";
+import Post from ".";
 import client from "../../../tina/__generated__/client";
 
-export const getPostProps = async () => {
-  const { data, query, variables } = await client.queries.postConnection();
+export async function generateStaticParams() {
+  const pages = await client.queries.postConnection();
+  const paths = pages.data?.postConnection?.edges?.map((edge) => ({
+    filename: edge?.node?._sys.breadcrumbs,
+  }));
 
-  return {
-    props: {
-      data,
-      query,
-      variables,
-      //myOtherProp: 'some-other-data',
-    },
-  };
-};
+  return paths || [];
+}
 
-export default async function Page() {
-    const { props } = await getPostProps()
-    return <PostList {...props} />
+
+export default async function PostPage({
+  params,
+}: {
+  params: { filename: string[] };
+}) {
+
+  const data = await client.queries.post({
+    relativePath: `${params.filename}.md`,
+  });
+
+  return (
+    <Post {...data}></Post>
+  );
 }
