@@ -1,6 +1,7 @@
 "use client"
 import { useTina } from "tinacms/dist/react";
 import { PostQuery } from "../../../tina/__generated__/types";
+
 interface ClientPageProps {
   query: string;
   variables: {
@@ -8,6 +9,7 @@ interface ClientPageProps {
   };
   data: PostQuery;
 }
+
 export default function Post(props : ClientPageProps) {
     // data passes though in production mode and data is updated to the sidebar data in edit-mode
     const { data } = useTina({

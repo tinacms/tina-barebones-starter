@@ -11,7 +11,6 @@ interface ClientPageProps {
     data: {page: PageQuery["page"]};
 }
 
-
 export default function ClientPage(props : ClientPageProps) {
     // data passes though in production mode and data is updated to the sidebar data in edit-mode
     const { data } = useTina({

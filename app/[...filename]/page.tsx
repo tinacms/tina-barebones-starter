@@ -10,7 +10,6 @@ export async function generateStaticParams() {
   return paths || [];
 }
 
-
 export default async function Page({
   params,
 }: {
