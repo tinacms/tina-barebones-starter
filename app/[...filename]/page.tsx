@@ -1,4 +1,4 @@
-import Home from "./client-page";
+import ClientPage from "./client-page";
 import client from "../../tina/__generated__/client";
 
 export async function generateStaticParams() {
@@ -21,6 +21,6 @@ export default async function Page({
   });
 
   return (
-    <Home {...data}></Home>
+    <ClientPage {...data}></ClientPage>
   );
 }
