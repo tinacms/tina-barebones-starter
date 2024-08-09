@@ -5,13 +5,13 @@ This is a [Tina CMS](https://tina.io/) project.
 Install the project's dependencies:
 
 ```
-yarn install
+pnpm install
 ```
 
 Run the project locally:
 
 ```
-yarn dev
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -29,7 +29,7 @@ NEXT_PUBLIC_TINA_BRANCH=<Specify the branch with Tina configured>
 Build the project:
 
 ```bash
-yarn build
+pnpm build
 ```
 
 ## Learn More
