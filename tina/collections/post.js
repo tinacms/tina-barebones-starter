@@ -12,13 +12,10 @@ export default {
       name: "title",
     },
     {
-      type: "string",
+      type: "rich-text",
       label: "Blog Post Body",
       name: "body",
       isBody: true,
-      ui: {
-        component: "textarea",
-      },
     },
   ],
   ui: {
