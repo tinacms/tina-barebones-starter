@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@tinacms/cli": "^1.8.4",
-    "@types/node": "^22.13.1",
+    "@types/node": "^22.13.4",
     "eslint": "^8.57.1",
     "eslint-config-next": "^14.2.24"
   }
