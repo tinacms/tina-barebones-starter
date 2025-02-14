@@ -2,6 +2,7 @@
 title: Open Source Software Vetting Procedure Guidelines
 ---
 
+
 ## Introduction
 
 Open source software offers numerous benefits, including cost-effectiveness, flexibility, and community-driven development. However, as highlighted by Ken Thompson's "Reflections on Trusting Trust" lecture, there are inherent security risks in using code not entirely created by oneself. This document outlines comprehensive guidelines for vetting open source projects to mitigate these risks while leveraging the advantages of open source software.
