@@ -11,11 +11,28 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Box as="body" margin="3rem">
-        <header>
+        <Box
+          as="header"
+          css={{
+            "& > a": {
+              fontSize: "lg",
+              textDecoration: "none",
+              marginX: 4,
+
+              "&:first-of-type": {
+                marginLeft: 0,
+              },
+
+              "&:last-of-type": {
+                marginRight: 0,
+              },
+            },
+          }}
+        >
           <Link href="/">Home</Link>
           {" | "}
           <Link href="/posts">Posts</Link>
-        </header>
+        </Box>
         <main>{children}</main>
       </Box>
     </html>
