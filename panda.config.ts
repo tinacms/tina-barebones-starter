@@ -10,8 +10,8 @@ export default defineConfig({
   // Files to exclude
   exclude: [],
 
-  // Use React
-  jsxFramework: 'react',
+  // Use Preact
+  jsxFramework: 'preact',
 
   // Useful for theme customization
   theme: {
