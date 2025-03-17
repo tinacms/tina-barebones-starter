@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "../components/Link";
 import { Box } from "../../styled-system/jsx";
 
 export default function PostList(props) {
