@@ -10,7 +10,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Box as="body" margin="3rem">
+      <Box
+        as="body"
+        margin="3rem"
+        color={{
+          base: "token(colors.neutral.950)",
+          _osDark: "white",
+        }}
+        backgroundColor={{
+          base: "white",
+          _osDark: "token(colors.neutral.950)",
+        }}
+      >
         <Box
           as="header"
           css={{
