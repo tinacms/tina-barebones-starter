@@ -1,8 +1,15 @@
 # The Docker image that will be used to build your app
 image: node:lts
+
+default:
+  before_script:
+  - corepack enable
+  - corepack prepare pnpm@latest --activate
+  - pnpm config set store-dir .pnpm-store
+
 pages:
   script:
-    - npm run build
+    - pnpm run build
   artifacts:
     paths:
       # The folder that contains the files to be exposed at the Page URL
