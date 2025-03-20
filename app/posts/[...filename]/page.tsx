@@ -19,5 +19,5 @@ export default async function PostPage({
 		relativePath: `${params.filename}.md`,
 	});
 
-	return <Post {...data}></Post>;
+	return <Post {...data} />;
 }
