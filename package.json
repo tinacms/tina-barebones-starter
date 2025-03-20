@@ -1,32 +1,32 @@
 {
-  "name": "tina-next-ts",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "prepare": "panda codegen",
-    "dev": "tinacms dev -c \"next dev\"",
-    "build": "tinacms build && next build",
-    "build-local": "tinacms build --local --skip-indexing --skip-cloud-checks && next build",
-    "start": "tinacms build && next start",
-    "format": "npx @biomejs/biome format --write ./app",
-    "lint:biome": "npx @biomejs/biome lint --write ./app",
-    "lint:next": "next lint",
-    "lint": "npm run lint:biome && npm run lint:next"
-  },
-  "dependencies": {
-    "next": "^14.2.25",
-    "preact": "^10.26.4",
-    "preact-render-to-string": "^6.5.13",
-    "react": "npm:@preact/compat@^18.3.1",
-    "react-dom": "npm:@preact/compat@^18.3.1",
-    "tinacms": "^2.7.3",
-    "typescript": "5.7.3"
-  },
-  "devDependencies": {
-    "@pandacss/dev": "^0.53.1",
-    "@tinacms/cli": "^1.9.3",
-    "@types/node": "^22.13.10",
-    "eslint": "^9.20.1",
-    "eslint-config-next": "^15.2.2"
-  }
+	"name": "tina-next-ts",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"prepare": "panda codegen",
+		"dev": "tinacms dev -c \"next dev\"",
+		"build": "tinacms build && next build",
+		"build-local": "tinacms build --local --skip-indexing --skip-cloud-checks && next build",
+		"start": "tinacms build && next start",
+		"format": "npx @biomejs/biome format --write ./app",
+		"lint:biome": "npx @biomejs/biome lint --write ./app",
+		"lint:next": "next lint",
+		"lint": "npm run lint:biome && npm run lint:next"
+	},
+	"dependencies": {
+		"next": "^14.2.25",
+		"preact": "^10.26.4",
+		"preact-render-to-string": "^6.5.13",
+		"react": "npm:@preact/compat@^18.3.1",
+		"react-dom": "npm:@preact/compat@^18.3.1",
+		"tinacms": "^2.7.3",
+		"typescript": "5.7.3"
+	},
+	"devDependencies": {
+		"@pandacss/dev": "^0.53.1",
+		"@tinacms/cli": "^1.9.3",
+		"@types/node": "^22.13.10",
+		"eslint": "^9.20.1",
+		"eslint-config-next": "^15.2.2"
+	}
 }
