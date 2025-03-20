@@ -1,5 +1,5 @@
-import Post from "./client-page";
 import client from "../../../tina/__generated__/client";
+import Post from "./client-page";
 
 export async function generateStaticParams() {
 	const pages = await client.queries.postConnection();

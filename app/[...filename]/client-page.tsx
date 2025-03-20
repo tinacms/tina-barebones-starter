@@ -1,6 +1,6 @@
 "use client";
-import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { tinaField, useTina } from "tinacms/dist/react";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { Box } from "../../styled-system/jsx";
 
 import type { PageQuery } from "../../tina/__generated__/types";

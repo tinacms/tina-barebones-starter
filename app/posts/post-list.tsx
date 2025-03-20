@@ -1,5 +1,5 @@
-import Link from "../components/Link";
 import { Box } from "../../styled-system/jsx";
+import Link from "../components/Link";
 
 export default function PostList(props) {
 	return (

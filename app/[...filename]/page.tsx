@@ -1,5 +1,5 @@
-import ClientPage from "./client-page";
 import client from "../../tina/__generated__/client";
+import ClientPage from "./client-page";
 
 export async function generateStaticParams() {
 	const pages = await client.queries.pageConnection();

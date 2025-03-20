@@ -1,8 +1,8 @@
 "use client";
 import { tinaField, useTina } from "tinacms/dist/react";
-import type { PostQuery } from "../../../tina/__generated__/types";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { Box } from "../../../styled-system/jsx";
+import type { PostQuery } from "../../../tina/__generated__/types";
 
 interface ClientPageProps {
 	query: string;

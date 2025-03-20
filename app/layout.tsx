@@ -1,5 +1,5 @@
-import Link from "./components/Link";
 import type React from "react";
+import Link from "./components/Link";
 import "./styles/globals.css";
 import { Box } from "../styled-system/jsx";
 
