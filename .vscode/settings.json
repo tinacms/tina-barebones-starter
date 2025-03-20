@@ -1,4 +1,8 @@
 {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.biome": "explicit"
+    },
+
     "editor.formatOnSave": true,
 
     "[javascript]": {
