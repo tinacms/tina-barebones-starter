@@ -1,0 +1,22 @@
+# The Docker image that will be used to build your app
+image: node:lts
+
+default:
+  # Functions that should be executed before the build script is run
+  before_script:
+    - corepack enable
+    - corepack prepare pnpm@latest --activate
+    - pnpm config set store-dir .pnpm-store
+    - pnpm install --frozen-lockfile
+
+pages:
+  script:
+    - pnpm run build && rm -fr public && mv build public
+  artifacts:
+    paths:
+      # The folder that contains the files to be exposed at the Page URL
+      - public
+  rules:
+    # This ensures that only pushes to the default branch will trigger
+    # a pages deploy
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
