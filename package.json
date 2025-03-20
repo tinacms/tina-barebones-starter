@@ -8,7 +8,10 @@
     "build": "tinacms build && next build",
     "build-local": "tinacms build --local --skip-indexing --skip-cloud-checks && next build",
     "start": "tinacms build && next start",
-    "lint": "next lint"
+    "format": "npx @biomejs/biome format --write ./app",
+    "lint:biome": "npx @biomejs/biome lint --write ./app",
+    "lint:next": "next lint",
+    "lint": "npm run lint:biome && npm run lint:next"
   },
   "dependencies": {
     "next": "^14.2.25",
