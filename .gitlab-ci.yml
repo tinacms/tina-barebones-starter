@@ -1,15 +1,34 @@
 # The Docker image that will be used to build your app
 image: node:lts
 
-default:
-  # Functions that should be executed before the build script is run
+# Define pipeline stages
+stages:
+  - quality
+  - deploy
+
+# Lint job configuration: runs code quality checks using Biome
+lint:
+  image:
+    name: ghcr.io/biomejs/biome:latest  # Use the latest Biome Docker image
+    entrypoint: [""]                    # This is required for the image to work in GitLab CI
+  stage: quality                        # Run in the quality stage
+  script:
+    - biome ci --reporter=gitlab --colors=off > /tmp/code-quality.json
+    - cp /tmp/code-quality.json code-quality.json
+  artifacts:
+    paths:
+    - code-quality.json    # Collect the code quality report as an artifact
+  rules:
+    - if: $CI_COMMIT_BRANCH    # Run job for commits on branches
+    - if: $CI_MERGE_REQUEST_ID # Run job for merge requests
+
+pages:
+  stage: deploy
   before_script:
     - corepack enable
     - corepack prepare pnpm@latest --activate
     - pnpm config set store-dir .pnpm-store
     - pnpm install --frozen-lockfile
-
-pages:
   script:
     - pnpm run build && rm -fr public && mv build public
   artifacts:

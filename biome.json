@@ -1,0 +1,12 @@
+{
+	"files": {
+		"ignore": [
+			"out/*",
+			"public/*",
+			".next/*",
+			"styled-system/*",
+			"tina/__generated__/*",
+			"tina/tina-lock.json"
+		]
+	}
+}
