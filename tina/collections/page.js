@@ -17,7 +17,7 @@ export default {
 	ui: {
 		router: ({ document }) => {
 			if (document._sys.filename === "home") {
-				return `/`;
+				return "/";
 			}
 			return undefined;
 		},
