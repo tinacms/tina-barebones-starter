@@ -30,11 +30,12 @@ pages:
     - pnpm config set store-dir .pnpm-store
     - pnpm install --frozen-lockfile
   script:
-    - pnpm run build && rm -fr public && mv build public
+    - pnpm run build
+  publish: build
   artifacts:
     paths:
       # The folder that contains the files to be exposed at the Page URL
-      - public
+      - build
   rules:
     # This ensures that only pushes to the default branch will trigger
     # a pages deploy
