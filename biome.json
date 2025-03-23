@@ -1,9 +1,11 @@
 {
 	"files": {
 		"ignore": [
-			"out/*",
+			"content/*",
+			"build/*",
 			"public/*",
 			".next/*",
+			"node_modules/*",
 			"styled-system/*",
 			"tina/__generated__/*",
 			"tina/tina-lock.json"
