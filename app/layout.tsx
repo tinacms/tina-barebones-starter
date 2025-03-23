@@ -1,6 +1,7 @@
 import type React from "react";
 import Link from "./components/Link";
 import "./styles/globals.css";
+import global from "../content/global/index.json";
 import { Box } from "../styled-system/jsx";
 
 export default function RootLayout({
@@ -40,9 +41,14 @@ export default function RootLayout({
 						},
 					}}
 				>
-					<Link href="/">Home</Link>
-					{" | "}
-					<Link href="/posts">Posts</Link>
+					{global.header.nav.map((link, i) => (
+						<>
+							<Link key={link.href} href={link.href}>
+								{link.label}
+							</Link>
+							{i === global.header.nav.length - 1 ? "" : " | "}
+						</>
+					))}
 				</Box>
 				<main>{children}</main>
 			</Box>
