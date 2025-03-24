@@ -6,14 +6,14 @@ on:
       - 'content/main'
 
 jobs:
-  create-pr:
+  create-pr-to-merge-to-main:
     runs-on: ubuntu-latest
     permissions:
       contents: write
       pull-requests: write
 
     steps:
-    - name: Checkout code
+    - name: Checkout `main` branch
       uses: actions/checkout@v4
       with:
         ref: main
@@ -26,8 +26,33 @@ jobs:
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v7
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
         labels: auto-pr
         title: 'Merge from `content/main` to `main`'
         body: 'This PR was automatically generated to merge from `content/main` to `main`'
-        commit-message: 'Auto-commit PR changes from `content/main`'
+        commit-message: 'Auto-commit PR changes from `content/main` to `main`'
+
+
+  create-pr-to-merge-to-dev-main:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+    - name: Checkout `dev/main` branch
+      uses: actions/checkout@v4
+      with:
+        ref: dev/main
+
+    - name: Reset to content/main branch
+      run: |
+        git fetch origin content/main:content/main
+        git reset --hard content/main
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v7
+      with:
+        labels: auto-pr
+        title: 'Merge from `content/main` to `dev/main`'
+        body: 'This PR was automatically generated to merge from `content/main` to `dev/main`'
+        commit-message: 'Auto-commit PR changes from `content/main` to `dev/main`'
