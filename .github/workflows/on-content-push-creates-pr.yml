@@ -1,0 +1,33 @@
+name: Create PR on `content/main` Push
+
+on:
+  push:
+    branches:
+      - 'content/main'
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        ref: main
+
+    - name: Reset to content/main branch
+      run: |
+        git fetch origin content/main:content/main
+        git reset --hard content/main
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v7
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        labels: auto-pr
+        title: 'Merge from `content/main` to `main`'
+        body: 'This PR was automatically generated to merge from `content/main` to `main`'
+        commit-message: 'Auto-commit PR changes from `content/main`'
