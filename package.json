@@ -18,13 +18,13 @@
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
 		"tinacms": "^2.7.3",
-		"typescript": "5.7.3"
+		"typescript": "5.8.2"
 	},
 	"devDependencies": {
-		"@pandacss/dev": "^0.53.1",
+		"@pandacss/dev": "^0.53.3",
 		"@tinacms/cli": "^1.9.3",
-		"@types/node": "^22.13.10",
-		"eslint": "^9.20.1",
-		"eslint-config-next": "^15.2.2"
+		"@types/node": "^22.13.13",
+		"eslint": "^9.23.0",
+		"eslint-config-next": "^15.2.3"
 	}
 }
