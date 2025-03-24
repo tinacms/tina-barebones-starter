@@ -28,6 +28,11 @@ jobs:
       with:
         labels: auto-pr
         branch: dev/merge-from-content
-        title: 'Merge from `content/main` to `dev/main`'
-        body: 'This PR was auto-generated to merge from `content/main` to `dev/main`.'
-        commit-message: 'Auto-commit PR changes from `content/main` to `dev/main`.'
+        title: Merge from `content/main` to `dev/main`
+        body: |
+          This PR was auto-generated to merge from `content/main` to `dev/main`.
+
+          ---
+          - Issue: https://git.chen.so/tina-next-ts/i/22f90530191d39508375402d7cf5359e4a96bb6a
+        commit-message: |
+          Auto-commit PR changes from `content/main` to `dev/main`.
