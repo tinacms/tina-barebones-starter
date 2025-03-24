@@ -6,32 +6,6 @@ on:
       - 'content/main'
 
 jobs:
-  create-pr-to-merge-to-main:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-
-    steps:
-    - name: Checkout `main` branch
-      uses: actions/checkout@v4
-      with:
-        ref: main
-
-    - name: Reset to content/main branch
-      run: |
-        git fetch origin content/main:content/main
-        git reset --hard content/main
-
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v7
-      with:
-        labels: auto-pr
-        title: 'Merge from `content/main` to `main`'
-        body: 'This PR was automatically generated to merge from `content/main` to `main`'
-        commit-message: 'Auto-commit PR changes from `content/main` to `main`'
-
-
   create-pr-to-merge-to-dev-main:
     runs-on: ubuntu-latest
     permissions:
@@ -53,6 +27,7 @@ jobs:
       uses: peter-evans/create-pull-request@v7
       with:
         labels: auto-pr
+        branch: dev/merge-from-content
         title: 'Merge from `content/main` to `dev/main`'
-        body: 'This PR was automatically generated to merge from `content/main` to `dev/main`'
-        commit-message: 'Auto-commit PR changes from `content/main` to `dev/main`'
+        body: 'This PR was auto-generated to merge from `content/main` to `dev/main`.'
+        commit-message: 'Auto-commit PR changes from `content/main` to `dev/main`.'
