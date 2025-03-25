@@ -22,22 +22,26 @@ export default function RootLayout({
 				_osDark: "token(colors.neutral.950)",
 			}}
 		>
-			<Box
-				as="header"
-				css={{
-					"& > a": {
-						fontSize: "lg",
-						textDecoration: "none",
-						marginX: 4,
-						"&:first-of-type": { marginLeft: 0 },
-						"&:last-of-type": { marginRight: 0 },
-					},
-				}}
-			>
-				{global.header.nav.map((link, i) => [
-					h(Link, { key: link.href, href: link.href }, link.label),
-					i === global.header.nav.length - 1 ? "" : " | ",
-				])}
+			<Box as="header">
+				<span>{global.header.name}</span>
+				<Box
+					as="span"
+					float="right"
+					css={{
+						"& > a": {
+							fontSize: "lg",
+							textDecoration: "none",
+							marginX: 4,
+							"&:first-of-type": { marginLeft: 0 },
+							"&:last-of-type": { marginRight: 0 },
+						},
+					}}
+				>
+					{global.header.nav.map(({ href, label }, i) => [
+						h(Link, { key: href, href }, label),
+						i === global.header.nav.length - 1 ? "" : " | ",
+					])}
+				</Box>
 			</Box>
 			<main>{children}</main>
 		</Box>,
