@@ -22,14 +22,13 @@ export default function RootLayout({
 				_osDark: "token(colors.neutral.950)",
 			}}
 		>
-			<Box as="header">
+			<Box as="header" fontSize="lg">
 				<span>{global.header.name}</span>
 				<Box
 					as="span"
 					float="right"
 					css={{
 						"& > a": {
-							fontSize: "lg",
 							textDecoration: "none",
 							marginX: 4,
 							"&:first-of-type": { marginLeft: 0 },
