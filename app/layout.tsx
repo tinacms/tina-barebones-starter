@@ -23,7 +23,7 @@ export default function RootLayout({
 			}}
 		>
 			<Box as="header" fontSize="lg">
-				<span>{global.header.name}</span>
+				<Link href="/">{global.header.name}</Link>
 				<Box
 					as="span"
 					float="right"
