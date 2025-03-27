@@ -19,5 +19,7 @@ export default async function PostPage({
 		relativePath: `${params.filename}.md`,
 	});
 
-	return <Post {...data} />;
+	const postListData = await client.queries.postConnection();
+
+	return <Post {...data} postListData={{ ...postListData.data }} />;
 }
