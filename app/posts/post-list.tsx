@@ -1,10 +1,13 @@
+import React from "react";
 import { Box } from "../../styled-system/jsx";
 import Link from "../components/Link";
 
-export default function PostList(props) {
+export default function PostList({ sidebarMode = false, ...props }) {
 	return (
-		<>
-			<h1>Posts</h1>
+		<Box as={sidebarMode ? "aside" : React.Fragment}>
+			<Box as={sidebarMode ? "div" : "h1"} fontWeight={sidebarMode && "bold"}>
+				Posts
+			</Box>
 			<Box>
 				{props.data.postConnection.edges.map((post) => (
 					<Box key={post.node.id}>
@@ -14,6 +17,6 @@ export default function PostList(props) {
 					</Box>
 				))}
 			</Box>
-		</>
+		</Box>
 	);
 }
