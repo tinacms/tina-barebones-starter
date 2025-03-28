@@ -1,8 +1,11 @@
+"use client";
+import { usePathname } from "next/navigation";
 import React from "react";
 import { Box } from "../../styled-system/jsx";
 import Link from "../components/Link";
 
 export default function PostList({ sidebarMode = false, ...props }) {
+	const pathname = usePathname();
 	return (
 		<Box as={sidebarMode ? "aside" : React.Fragment}>
 			<Box
@@ -20,10 +23,7 @@ export default function PostList({ sidebarMode = false, ...props }) {
 						fontSize={sidebarMode && "sm"}
 						paddingLeft={sidebarMode && 2}
 						className={
-							typeof window !== "undefined" &&
-							window.location.pathname ===
-								`/posts/${post.node._sys.filename}` &&
-							"active"
+							pathname === `/posts/${post.node._sys.filename}` && "active"
 						}
 						css={{
 							"&.active": {
