@@ -22,7 +22,7 @@ export default function RootLayout({
 				_osDark: "token(colors.neutral.950)",
 			}}
 		>
-			<Box as="header" fontSize="lg">
+			<Box as="header" fontSize="lg" marginBottom={4}>
 				<Link href="/">{global.header.name}</Link>
 				<Box
 					as="span"
