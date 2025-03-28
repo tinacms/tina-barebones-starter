@@ -5,7 +5,7 @@ import { Box } from "../../styled-system/jsx";
 import Link from "../components/Link";
 
 export default function PostList({ sidebarMode = false, ...props }) {
-	const pathname = usePathname();
+	const pathname = usePathname().replace(/\/$/, "");
 	return (
 		<Box as={sidebarMode ? "aside" : React.Fragment}>
 			<Box
