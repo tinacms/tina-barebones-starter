@@ -23,6 +23,7 @@
 	},
 	"devDependencies": {
 		"@pandacss/dev": "^0.53.3",
+		"@park-ui/panda-preset": "^0.43.1",
 		"@tinacms/cli": "^1.9.3",
 		"@types/node": "^22.13.13",
 		"eslint": "^9.23.0",
