@@ -1,15 +1,15 @@
-import NextLink, { type LinkProps } from "next/link";
-import React from "react";
-import { Box, type BoxProps } from "../../../styled-system/jsx";
+import NextLink, { type LinkProps as NextLinkProps } from "next/link";
+import React, { createElement as h } from "react";
 
-export const Link = ({
-	children,
-	...props
-}: LinkProps &
-	BoxProps & {
+const Link = React.forwardRef<
+	HTMLLinkElement,
+	React.LinkHTMLAttributes<HTMLLinkElement> & {
 		children?: React.ReactNode;
-	}) => {
-	return React.createElement(Box, { as: NextLink, ...props }, children);
-};
+	}
+>(({ ...props }, ref) => {
+	return h(NextLink, { ref, ...props }, props.children);
+});
+Link.displayName = "Link";
 
+export type LinkProps = NextLinkProps;
 export default Link;
