@@ -17,7 +17,7 @@
     "typescript": "5.5.2"
   },
   "devDependencies": {
-    "@tinacms/cli": "^1.11.0",
+    "@tinacms/cli": "^2.1.2",
     "@types/node": "^22.18.12",
     "eslint": "^8.57.1",
     "eslint-config-next": "^14.2.33"
