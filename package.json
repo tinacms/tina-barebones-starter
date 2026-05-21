@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "tinacms dev -c \"next dev\"",
     "build": "tinacms build && next build",
-    "build-local": "tinacms build --local --skip-indexing --skip-cloud-checks && next build",
+    "build-local": "tinacms build --content=local --skip-cloud-checks -c \"next build\"",
     "start": "tinacms build && next start",
     "lint": "next lint"
   },
@@ -13,11 +13,11 @@
     "next": "^14.2.35",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "tinacms": "^3.7.1",
+    "tinacms": "^3.8.1",
     "typescript": "5.5.2"
   },
   "devDependencies": {
-    "@tinacms/cli": "^2.2.1",
+    "@tinacms/cli": "^2.3.1",
     "@types/node": "^22.18.12",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.1",
