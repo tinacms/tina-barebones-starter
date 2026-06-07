@@ -1,0 +1,10 @@
+onlyBuiltDependencies:   # pnpm 10
+  - better-sqlite3
+  - core-js
+  - esbuild
+  - protobufjs
+allowBuilds:             # pnpm 11
+  better-sqlite3: true
+  core-js: true
+  esbuild: true
+  protobufjs: true
